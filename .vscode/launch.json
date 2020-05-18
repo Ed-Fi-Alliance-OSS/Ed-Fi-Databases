@@ -1,0 +1,176 @@
+{
+  // Use IntelliSense to find out which attributes exist for C# debugging
+  // Use hover for the description of the existing attributes
+  // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Deploy SqlServer Ods",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "args": [
+        "deploy",
+        "--engine",
+        "SqlServer",
+        "--connectionString",
+        "Server=localhost; Database=Db_Deploy_Ods_Test; Integrated Security=True; Application Name=EdFi.Db.Deploy;",
+        "--filePaths",
+        "${workspaceFolder}/../Ed-Fi-Ods/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/"
+      ]
+    },
+    {
+      "name": "Deploy SqlServer Ods Extensions",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "args": [
+        "deploy",
+        "--engine",
+        "SqlServer",
+        "--connectionString",
+        "Server=localhost; Database=Db_Deploy_Ods_Test; Integrated Security=True; Application Name=EdFi.Db.Deploy;",
+        "--filePaths",
+        "${workspaceFolder}/../Ed-Fi-Ods/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph"
+      ]
+    },
+    {
+      "name": "Deploy SqlServer Ods Extensions Features",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "args": [
+        "deploy",
+        "--engine",
+        "SqlServer",
+        "--connectionString",
+        "Server=localhost; Database=Db_Deploy_Ods_Test; Integrated Security=True; Application Name=EdFi.Db.Deploy;",
+        "--filePaths",
+        "${workspaceFolder}/../Ed-Fi-Ods/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph",
+        "--features",
+        "Changes",
+        "RecordOwnership"
+      ]
+    },
+    {
+      "name": "WhatIf SqlServer Ods",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "args": [
+        "whatif",
+        "--engine",
+        "SqlServer",
+        "--connectionString",
+        "Server=localhost; Database=Db_Deploy_Ods_Test; Integrated Security=True; Application Name=EdFi.Db.Deploy;",
+        "--filePaths",
+        "${workspaceFolder}/../Ed-Fi-Ods/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/"
+      ]
+    },
+    {
+      "name": "Deploy PostgreSql Ods",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "args": [
+        "deploy",
+        "--engine",
+        "PostgreSql",
+        "--connectionString",
+        "Host=localhost; Port=5432; Database=Db_Deploy_Ods_Test; username=postgres;  Application Name=EdFi.Db.Deploy;",
+        "--filePaths",
+        "${workspaceFolder}/../Ed-Fi-Ods/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/"
+      ]
+    },
+    {
+      "name": "Deploy PostgreSql Ods Extensions",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "args": [
+        "deploy",
+        "--engine",
+        "PostgreSql",
+        "--connectionString",
+        "Host=localhost; Port=5432; Database=Db_Deploy_Ods_Test; username=postgres; Application Name=EdFi.Db.Deploy;",
+        "--filePaths",
+        "${workspaceFolder}/../Ed-Fi-Ods/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph"
+      ]
+    },
+    {
+      "name": "Deploy PostgreSql Ods Extensions Features",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "args": [
+        "deploy",
+        "--engine",
+        "PostgreSql",
+        "--connectionString",
+        "Host=localhost; Port=5432; Database=Db_Deploy_Ods_Test; username=postgres; Application Name=EdFi.Db.Deploy;",
+        "--filePaths",
+        "${workspaceFolder}/../Ed-Fi-Ods/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample",
+        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph",
+        "--features",
+        "Changes",
+        "RecordOwnership"
+      ]
+    },
+    {
+      "name": "WhatIf PostgreSql Ods",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "args": [
+        "whatif",
+        "--engine",
+        "PostgreSql",
+        "--connectionString",
+        "Host=localhost; Port=5432; Database=Db_Deploy_Ods_Test; username=postgres; Application Name=EdFi.Db.Deploy;",
+        "--filePaths",
+        "${workspaceFolder}/../Ed-Fi-Ods/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
+        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/"
+      ]
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    }
+  ]
+}

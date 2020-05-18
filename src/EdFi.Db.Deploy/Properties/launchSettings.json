@@ -1,0 +1,36 @@
+{
+  "profiles": {
+    "Deploy SqlServer Ods": {
+      "commandName": "Project",
+      "commandLineArgs": "deploy --engine SqlServer --connectionString \"Server=localhost; Database=Db_Deploy_Ods_Test; Integrated Security=True; Application Name=EdFi.Db.Deploy;\" --filePaths \"../../../../../../Ed-Fi-Ods/\" \"../../../../../../Ed-Fi-ODS-Implementation/\" \"../../../../../../Ed-Fi-ODS/Application/EdFi.Ods.Standard\""
+    },
+    "Deploy SqlServer Ods Extensions": {
+      "commandName": "Project",
+      "commandLineArgs": "deploy --engine SqlServer --connectionString \"Server=localhost; Database=Db_Deploy_Ods_Test; Integrated Security=True; Application Name=EdFi.Db.Deploy;\" --filePaths \"../../../../../../Ed-Fi-Ods/\" \"../../../../../../Ed-Fi-ODS-Implementation/\" \"../../../../../../Ed-Fi-ODS/Application/EdFi.Ods.Standard\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph\""
+    },
+    "Deploy SqlServer Ods Extensions Features": {
+      "commandName": "Project",
+      "commandLineArgs": "deploy --engine SqlServer --connectionString \"Server=localhost; Database=Db_Deploy_Ods_Test; Integrated Security=True; Application Name=EdFi.Db.Deploy;\" --filePaths \"../../../../../../Ed-Fi-Ods/\" \"../../../../../../Ed-Fi-ODS-Implementation/\" \"../../../../../../Ed-Fi-ODS/Application/EdFi.Ods.Standard\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph\" --features \"Changes\", \"RecordOwnership\""
+    },
+    "WhatIf SqlServer Ods": {
+      "commandName": "Project",
+      "commandLineArgs": "whatif --engine SqlServer --connectionString \"Server=localhost; Database=Db_Deploy_Ods_Test; Integrated Security=True; Application Name=EdFi.Db.Deploy;\" --filePaths \"../../../../../../Ed-Fi-Ods/\" \"../../../../../../Ed-Fi-ODS-Implementation/\" \"../../../../../../Ed-Fi-ODS/Application/EdFi.Ods.Standard\""
+    },
+    "Deploy PostgreSql Ods": {
+      "commandName": "Project",
+      "commandLineArgs": "deploy --engine PostgreSql --connectionString \"Host=localhost; Port=5432; Database=Db_Deploy_Ods_Test; username=postgres; Application Name=EdFi.Db.Deploy;\" --filePaths \"../../../../../../Ed-Fi-Ods/\" \"../../../../../../Ed-Fi-ODS-Implementation/\" \"../../../../../../Ed-Fi-ODS/Application/EdFi.Ods.Standard\""
+    },
+    "Deploy PostgreSql Ods Extensions": {
+      "commandName": "Project",
+      "commandLineArgs": "deploy --engine PostgreSql --connectionString \"Host=localhost; Port=5432; Database=Db_Deploy_Ods_Test; username=postgres; Application Name=EdFi.Db.Deploy;\" --filePaths \"../../../../../../Ed-Fi-Ods/\" \"../../../../../../Ed-Fi-ODS-Implementation/\" \"../../../../../../Ed-Fi-ODS/Application/EdFi.Ods.Standard\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph\""
+    },
+    "Deploy PostgreSql Ods Extensions Features": {
+      "commandName": "Project",
+      "commandLineArgs": "deploy --engine PostgreSql --connectionString \"Host=localhost; Port=5432; Database=Db_Deploy_Ods_Test; username=postgres; Application Name=EdFi.Db.Deploy;\" --filePaths \"../../../../../../Ed-Fi-Ods/\" \"../../../../../../Ed-Fi-ODS-Implementation/\" \"../../../../../../Ed-Fi-ODS/Application/EdFi.Ods.Standard\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample\" \"../../../../../../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph\" --features \"Changes\", \"RecordOwnership\""
+    },
+    "WhatIf PostgreSql Ods": {
+      "commandName": "Project",
+      "commandLineArgs": "whatif --engine PostgreSql --connectionString \"Host=localhost; Port=5432; Database=Db_Deploy_Ods_Test; username=postgres; Application Name=EdFi.Db.Deploy;\" --filePaths \"../../../../../../Ed-Fi-Ods/\" \"../../../../../../Ed-Fi-ODS-Implementation/\" \"../../../../../../Ed-Fi-ODS/Application/EdFi.Ods.Standard\""
+    }
+  }
+}

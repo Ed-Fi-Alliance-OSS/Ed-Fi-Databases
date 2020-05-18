@@ -1,0 +1,46 @@
+# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
+[Bb]in
+csx/
+rcf/
+[Oo]bj
+logistics/bin
+.vs/
+
+#User-specific files
+*.suo
+*.csproj.user
+*.ccproj.user
+*.sln.DotSettings.user
+*.csproj.DotSettings.user
+*.pubxml.user
+*.dbmdl
+.vs/
+
+
+#Vim backup files
+*~
+
+#MS Office Backup Files
+~*
+
+#Resharper files
+_ReSharper.*
+*.resharper
+*.resharper.user
+
+#Others
+*.cache
+*.orig
+*.original
+*.log
+
+#Packages
+packages/
+/*.dll
+/*.pdb
+/*.XML
+*.nupkg
+
+#Rider
+.idea/
+
