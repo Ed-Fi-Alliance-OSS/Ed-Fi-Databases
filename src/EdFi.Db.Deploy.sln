@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdFi.Db.Deploy.Tests", "..\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{D6D51300-2F30-4C20-A170-FAED3384D995}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Folder", "Solution Folder", "{3F082E9F-A88E-43BA-A68A-68E67CED3242}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Project Information", "_Project Information", "{3F082E9F-A88E-43BA-A68A-68E67CED3242}"
 	ProjectSection(SolutionItems) = preProject
 		..\CONTRIBUTORS.md = ..\CONTRIBUTORS.md
 		..\NOTICES.md = ..\NOTICES.md
