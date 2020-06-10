@@ -13,15 +13,17 @@
     <Description>Database deployment utility for the Ed-Fi ODS/API solution.</Description>
     <Copyright>Copyright © 2019 Ed-Fi Alliance, LLC and contributors</Copyright>
     <PackageId>EdFi.Db.Deploy</PackageId>
-    <PackageProjectUrl>https://github.com/Ed-Fi-Alliance/Ed-Fi-Databases/tree/master</PackageProjectUrl>
-    <PackageLicense>https://www.ed-fi.org/license</PackageLicense>
+	<PackageProjectUrl>https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Databases/tree/master</PackageProjectUrl>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>	
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
     <PackageType>DotnetTool</PackageType>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>EdFi.Db.Deploy</ToolCommandName>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-
+	<ItemGroup>
+		<None Include="../../LICENSE.txt" Pack="true" PackagePath="LICENSE.txt"/>
+	</ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
     <PackageReference Include="Dapper" Version="2.0.35" />
