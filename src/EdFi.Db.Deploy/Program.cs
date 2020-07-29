@@ -46,6 +46,12 @@ namespace EdFi.Db.Deploy
                     })
                 .ParseArguments<DeployDatabase, WhatIfExecution>(args);
 
+            if (args != null &&
+               (args[0].Equals("help", StringComparison.InvariantCultureIgnoreCase) || args[0].Equals("version", StringComparison.InvariantCultureIgnoreCase)))
+            {
+                Environment.Exit(0);
+            }
+
             int exitCode = result.MapResult(
                 (IOptions opts) => RunDatabaseDeployTool(opts),
                 ParseErrorOccurred
