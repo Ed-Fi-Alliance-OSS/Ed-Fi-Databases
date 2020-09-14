@@ -36,5 +36,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="../../LICENSE.txt" Pack="true" PackagePath="LICENSE.txt" />
+    <None Include="../../NOTICES.md" Pack="true" PackagePath="NOTICES.md" />
   </ItemGroup>
 </Project>
