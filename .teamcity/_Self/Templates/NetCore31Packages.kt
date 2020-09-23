@@ -110,7 +110,7 @@ object NetCore31Packages : Template({
             publisher = github {
                 githubUrl = "https://api.github.com"
                 authType = personalToken {
-                    token = "******"
+                    token = "%github.accessToken%"
                 }
             }
         }
