@@ -13,6 +13,11 @@ object DbDeployProject : Project({
     params {
         param("build.feature.freeDiskSpace", "2gb")
         param("teamcity.ui.settings.readOnly","true")
+        param("git.branch.default", "ODS-4566")
+        param("git.branch.specification", """
+            +:refs/heads/(*)
+            +:(refs/pull/*/head)
+        """.trimIndent())
     }
 
     template(_self.templates.NetCore31Packages)
