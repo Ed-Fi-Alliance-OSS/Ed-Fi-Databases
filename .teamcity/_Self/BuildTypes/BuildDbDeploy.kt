@@ -31,7 +31,7 @@ object BuildDbDeploy : BuildType({
     }
 
     vcs {
-        root(AbsoluteId("OdsPlatform_EdFiDatabases"))
+        root(DslContext.settingsRoot)
     }
 
     steps {
