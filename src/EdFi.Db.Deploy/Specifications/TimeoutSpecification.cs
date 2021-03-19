@@ -17,7 +17,7 @@ namespace EdFi.Db.Deploy.Specifications
 
             if (obj.TimeoutInSeconds < 0)
             {
-                ErrorMessages.Add("Connection Timeout must be greater than or equal to 0 seconds");
+                ErrorMessages.Add("Command Timeout must be greater than or equal to 0 seconds");
             }
 
             return !ErrorMessages.Any();
