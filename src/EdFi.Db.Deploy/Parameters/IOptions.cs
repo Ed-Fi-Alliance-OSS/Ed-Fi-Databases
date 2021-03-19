@@ -24,7 +24,7 @@ namespace EdFi.Db.Deploy.Parameters
         [Option('c', "connectionString", Required = true, HelpText = "Connection string")]
         string ConnectionString { get; set; }
 
-        [Option('t', "timeOut", Default = 300, HelpText = "Command timeout in seconds")]
+        [Option('t', "timeOut", Default = 600, HelpText = "Command timeout in seconds")]
         int TimeoutInSeconds { get; set; }
 
         [Option('p', "filePaths", Separator = ',', HelpText = "Path to Files to be installed")]
