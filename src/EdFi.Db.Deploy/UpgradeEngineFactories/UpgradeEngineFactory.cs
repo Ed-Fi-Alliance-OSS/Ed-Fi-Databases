@@ -9,6 +9,7 @@ using System.IO;
 using DbUp.Builder;
 using DbUp.Engine;
 using DbUp.ScriptProviders;
+using DbUp.Support;
 using EdFi.Db.Deploy.Adapters;
 using EdFi.Db.Deploy.Helpers;
 
@@ -21,7 +22,7 @@ namespace EdFi.Db.Deploy.UpgradeEngineFactories
         {
             Preconditions.ThrowIfNull(config, nameof(config));
 
-            return UpgradeEngineBuilder(config.ConnectionString)
+            var engineBuilder = UpgradeEngineBuilder(config.ConnectionString)
                 .WithScriptsFromFileSystem(
                     config.ParentFolder(),
                     new FileSystemScriptOptions
@@ -31,8 +32,13 @@ namespace EdFi.Db.Deploy.UpgradeEngineFactories
                             StringComparison.InvariantCultureIgnoreCase),
                         IncludeSubDirectories = true
                     })
-                .WithExecutionTimeout(TimeSpan.FromSeconds(config.TimeoutInSeconds))
-                .Build();
+                .WithExecutionTimeout(TimeSpan.FromSeconds(config.TimeoutInSeconds));
+
+            // Ignore DeployJournal.ScriptName casing
+            engineBuilder
+                .Configure(c => c.ScriptNameComparer = new ScriptNameComparer(StringComparer.OrdinalIgnoreCase));
+
+            return engineBuilder.Build();
         }
 
         public IUpgradeEngineWrapper Create(UpgradeEngineConfig config, params SqlScript[] scripts)
