@@ -9,6 +9,7 @@ using System.IO;
 using DbUp.Builder;
 using DbUp.Engine;
 using DbUp.ScriptProviders;
+using DbUp.Support;
 using EdFi.Db.Deploy.Adapters;
 using EdFi.Db.Deploy.Helpers;
 
@@ -32,6 +33,7 @@ namespace EdFi.Db.Deploy.UpgradeEngineFactories
                         IncludeSubDirectories = true
                     })
                 .WithExecutionTimeout(TimeSpan.FromSeconds(config.TimeoutInSeconds))
+                .WithScriptNameComparer(new ScriptNameComparer(StringComparer.OrdinalIgnoreCase))
                 .Build();
         }
 
