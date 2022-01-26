@@ -22,7 +22,7 @@ namespace EdFi.Db.Deploy.UpgradeEngineFactories
         {
             Preconditions.ThrowIfNull(config, nameof(config));
 
-            var engineBuilder = UpgradeEngineBuilder(config.ConnectionString)
+            return UpgradeEngineBuilder(config.ConnectionString)
                 .WithScriptsFromFileSystem(
                     config.ParentFolder(),
                     new FileSystemScriptOptions
@@ -32,13 +32,9 @@ namespace EdFi.Db.Deploy.UpgradeEngineFactories
                             StringComparison.InvariantCultureIgnoreCase),
                         IncludeSubDirectories = true
                     })
-                .WithExecutionTimeout(TimeSpan.FromSeconds(config.TimeoutInSeconds));
-
-            // Ignore DeployJournal.ScriptName casing
-            engineBuilder
-                .Configure(c => c.ScriptNameComparer = new ScriptNameComparer(StringComparer.OrdinalIgnoreCase));
-
-            return engineBuilder.Build();
+                .WithExecutionTimeout(TimeSpan.FromSeconds(config.TimeoutInSeconds))
+                .WithScriptNameComparer(new ScriptNameComparer(StringComparer.OrdinalIgnoreCase))
+                .Build();
         }
 
         public IUpgradeEngineWrapper Create(UpgradeEngineConfig config, params SqlScript[] scripts)
