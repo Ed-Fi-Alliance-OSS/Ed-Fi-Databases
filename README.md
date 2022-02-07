@@ -7,13 +7,13 @@ For more information, see:
 * For more information, go to [Ed-Fi Tech Docs](https://techdocs.ed-fi.org/) for instructions on getting started, a summary of our code repositories and additional technical information.
 * [How to Submit an Issue](https://techdocs.ed-fi.org/display/ETKB/How+To%3A+Submit+an+Issue)
 * [How Submit a Feature Request](https://techdocs.ed-fi.org/display/ETKB/How+To%3A+Submit+a+Feature+Request)
-* Review on-going development work at [Link to appropriate Tracker project]
+* [Review on-going development work](https://tracker.ed-fi.org/projects/EDFI/)
 
 ## Developer Instructions
 
 ### Build Instructions
 
-- Requires [.NET Core 2.2 SDK](https://dotnet.microsoft.com/download)
+- Requires [.NET 6 SDK](https://dotnet.microsoft.com/download)
 - No special commands to execute - simply call `dotnet build` in the `src`
   directory.
 
