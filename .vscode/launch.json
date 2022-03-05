@@ -9,7 +9,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/net6.0/EdFi.Db.Deploy.dll",
       "args": [
         "deploy",
         "--engine",
@@ -19,7 +19,7 @@
         "--filePaths",
         "${workspaceFolder}/../Ed-Fi-Ods/",
         "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
-        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/"
+        "${workspaceFolder}/../Ed-Fi-ODS/Application/EdFi.Ods.Standard/"
       ]
     },
     {
@@ -27,7 +27,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/net6.0/EdFi.Db.Deploy.dll",
       "args": [
         "deploy",
         "--engine",
@@ -37,10 +37,10 @@
         "--filePaths",
         "${workspaceFolder}/../Ed-Fi-Ods/",
         "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
-        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph"
+        "${workspaceFolder}/../Ed-Fi-ODS/Application/EdFi.Ods.Standard/",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.Sample",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.Homograph"
       ]
     },
     {
@@ -48,7 +48,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/net6.0/EdFi.Db.Deploy.dll",
       "args": [
         "deploy",
         "--engine",
@@ -58,10 +58,10 @@
         "--filePaths",
         "${workspaceFolder}/../Ed-Fi-Ods/",
         "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
-        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph",
+        "${workspaceFolder}/../Ed-Fi-ODS/Application/EdFi.Ods.Standard/",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.Sample",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.Homograph",
         "--features",
         "Changes",
         "RecordOwnership"
@@ -72,7 +72,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/net6.0/EdFi.Db.Deploy.dll",
       "args": [
         "whatif",
         "--engine",
@@ -82,7 +82,7 @@
         "--filePaths",
         "${workspaceFolder}/../Ed-Fi-Ods/",
         "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
-        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/"
+        "${workspaceFolder}/../Ed-Fi-ODS/Application/EdFi.Ods.Standard/"
       ]
     },
     {
@@ -90,7 +90,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/net6.0/EdFi.Db.Deploy.dll",
       "args": [
         "deploy",
         "--engine",
@@ -100,7 +100,7 @@
         "--filePaths",
         "${workspaceFolder}/../Ed-Fi-Ods/",
         "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
-        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/"
+        "${workspaceFolder}/../Ed-Fi-ODS/Application/EdFi.Ods.Standard/"
       ]
     },
     {
@@ -108,7 +108,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/net6.0/EdFi.Db.Deploy.dll",
       "args": [
         "deploy",
         "--engine",
@@ -118,10 +118,10 @@
         "--filePaths",
         "${workspaceFolder}/../Ed-Fi-Ods/",
         "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
-        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph"
+        "${workspaceFolder}/../Ed-Fi-ODS/Application/EdFi.Ods.Standard/",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.Sample",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.Homograph"
       ]
     },
     {
@@ -129,7 +129,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/net6.0/EdFi.Db.Deploy.dll",
       "args": [
         "deploy",
         "--engine",
@@ -139,10 +139,10 @@
         "--filePaths",
         "${workspaceFolder}/../Ed-Fi-Ods/",
         "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
-        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.GrandBend",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Sample",
-        "${workspaceFolder}/../Ed-Fi-Ods-Implementation/Application/EdFi.Ods.Extensions.Homograph",
+        "${workspaceFolder}/../Ed-Fi-ODS/Application/EdFi.Ods.Standard/",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.Sample",
+        "${workspaceFolder}/../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.Homograph",
         "--features",
         "Changes",
         "RecordOwnership"
@@ -153,7 +153,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/netcoreapp2.2/EdFi.Db.Deploy.dll",
+      "program": "${workspaceFolder}/src/EdFi.Db.Deploy/bin/Debug/net6.0/EdFi.Db.Deploy.dll",
       "args": [
         "whatif",
         "--engine",
@@ -163,7 +163,7 @@
         "--filePaths",
         "${workspaceFolder}/../Ed-Fi-Ods/",
         "${workspaceFolder}/../Ed-Fi-ODS-Implementation/",
-        "${workspaceFolder}/../Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Standard/"
+        "${workspaceFolder}/../Ed-Fi-ODS/Application/EdFi.Ods.Standard/"
       ]
     },
     {
