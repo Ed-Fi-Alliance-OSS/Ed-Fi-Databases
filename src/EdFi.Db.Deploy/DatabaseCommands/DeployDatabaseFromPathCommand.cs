@@ -123,7 +123,7 @@ namespace EdFi.Db.Deploy.DatabaseCommands
                         IsSuccessful = false,
                         RequiresUpgrade = true,
                         Exception = new Exception(
-                            $"Upgrades are not supported at this time for database type {DatabaseType.ODS} using the {EdFiStandardIdentifier} data model. This tool only supports feature scripts for this type. Please use other tooling such as Migration Utility to upgrade this database.")
+                            $"Upgrades are not supported at this time for database type {DatabaseType.ODS} using the {EdFiStandardIdentifier} data model. This tool only supports feature scripts for this type.")
                     };
                 }
 
