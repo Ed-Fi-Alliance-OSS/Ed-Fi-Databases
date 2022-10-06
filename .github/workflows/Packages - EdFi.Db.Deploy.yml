@@ -15,7 +15,7 @@ on:
         
 env:
   INFORMATIONAL_VERSION: "3.0"
-  BUILD_INCREMENTER: "325"
+  BUILD_INCREMENTER: "355"
   CONFIGURATION: "Release"
   CURRENT_BRANCH:  ${{ GITHUB.REF_NAME }}
   AZURE_ARTIFACT_URL: "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json"
