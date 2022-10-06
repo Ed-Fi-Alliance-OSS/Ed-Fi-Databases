@@ -92,7 +92,7 @@ jobs:
         }
         New-Item -ItemType Directory -Force -Path $reports | Out-Null
         $reportName = $reports + "EdFi.Db.Deploy.xml"
-        .\build.githubactions.ps1 Build -Configuration ${{ env.CONFIGURATION }} -TestFilter "LocalOnly" -LoggerReportName $reportName -InformationalVersion ${{ env.INFORMATIONAL_VERSION}} -BuildCounter ${{ github.run_number }} -BuildIncrementer ${{env.BUILD_INCREMENTER}} -Solution "$env:GITHUB_WORKSPACE/Ed-Fi-Databases/src/EdFi.Db.Deploy.sln"
+        .\build.githubactions.ps1 Test -Configuration ${{ env.CONFIGURATION }} -TestFilter "LocalOnly" -LoggerReportName $reportName -InformationalVersion ${{ env.INFORMATIONAL_VERSION}} -BuildCounter ${{ github.run_number }} -BuildIncrementer ${{env.BUILD_INCREMENTER}} -Solution "$env:GITHUB_WORKSPACE/Ed-Fi-Databases/src/EdFi.Db.Deploy.sln"
       shell: pwsh
     - name: pack
       working-directory: ./Ed-Fi-Databases/
