@@ -1,0 +1,117 @@
+# SPDX-License-Identifier: Apache-2.0
+# Licensed to the Ed-Fi Alliance under one or more agreements.
+# The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
+# See the LICENSE and NOTICES files in the project root for more information.
+
+name: Packages - EdFi.Db.Deploy
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+        
+env:
+  INFORMATIONAL_VERSION: "3.0"
+  BUILD_INCREMENTER: "355"
+  CONFIGURATION: "Release"
+  CURRENT_BRANCH:  ${{ GITHUB.REF_NAME }}
+  AZURE_ARTIFACT_URL: "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json"
+  AZURE_ARTIFACT_NUGET_KEY: ${{ secrets.AZURE_ARTIFACTS_PERSONAL_ACCESS_TOKEN }}
+  VSS_NUGET_EXTERNAL_FEED_ENDPOINTS : '{"endpointCredentials": [{"endpoint": "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json","password": "${{ secrets.AZURE_ARTIFACTS_PERSONAL_ACCESS_TOKEN }}"}]}'
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Setup .NET
+      uses: actions/setup-dotnet@c0d4ad69d8bd405d234f1c9166d383b7a4f69ed8 # v2.1.0
+      with:
+        dotnet-version: 6.0.x
+    - name: Support longpaths
+      run: git config --system core.longpaths true
+    - name: Checkout Ed-Fi-Databases
+      uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # v2
+      with:
+          repository: Ed-Fi-Alliance-OSS/Ed-Fi-Databases
+          path: Ed-Fi-Databases/
+    - name: Checkout Ed-Fi-ODS-Implementation
+      uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # v2
+      with:
+          repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS-Implementation
+          path: Ed-Fi-ODS-Implementation/
+    - name: Is pull request branch exists in Ed-Fi-ODS-Implementation
+      working-directory: ./Ed-Fi-ODS-Implementation/
+      shell: pwsh
+      run: |
+          $patternName = 'refs/heads/' +  '${{ env.CURRENT_BRANCH }}'
+          $is_pull_request_branch = 'False'
+          $is_pull_request_branch = git ls-remote --heads origin ${{ env.CURRENT_BRANCH }} | Select-String -Pattern $patternName -SimpleMatch -Quiet
+          if ($is_pull_request_branch -eq $true) {
+            git fetch origin ${{ env.CURRENT_BRANCH }}
+            git checkout ${{ env.CURRENT_BRANCH }}
+          }
+    - name: Checkout Ed-Fi-ODS
+      uses: actions/checkout@ec3a7ce113134d7a93b817d10a8272cb61118579 # v2
+      with:
+          repository: Ed-Fi-Alliance-OSS/Ed-Fi-ODS
+          path: Ed-Fi-ODS/
+    - name: Is pull request branch exists in Ed-Fi-ODS
+      working-directory: ./Ed-Fi-ODS/
+      shell: pwsh
+      run: |
+          $patternName = 'refs/heads/' +  '${{ env.CURRENT_BRANCH }}'
+          $is_pull_request_branch = 'False'
+          $is_pull_request_branch = git ls-remote --heads origin ${{ env.CURRENT_BRANCH }} | Select-String -Pattern $patternName -SimpleMatch -Quiet
+          if ($is_pull_request_branch -eq $true) {
+            git fetch origin ${{ env.CURRENT_BRANCH }}
+            git checkout ${{ env.CURRENT_BRANCH }}
+          }
+    - name: Restore
+      working-directory: ./Ed-Fi-Databases/
+      run: |
+        .\build.githubactions.ps1 Restore  -Solution "$env:GITHUB_WORKSPACE/Ed-Fi-Databases/src/EdFi.Db.Deploy.sln"
+      shell: pwsh
+    - name: Build
+      working-directory: ./Ed-Fi-Databases/
+      run: |
+        .\build.githubactions.ps1 Build -Configuration ${{ env.CONFIGURATION }} -InformationalVersion ${{ env.INFORMATIONAL_VERSION}} -BuildCounter ${{ github.run_number }} -BuildIncrementer ${{env.BUILD_INCREMENTER}} -Solution "$env:GITHUB_WORKSPACE/Ed-Fi-Databases/src/EdFi.Db.Deploy.sln"
+      shell: pwsh
+    - name: unit tests 
+      working-directory: ./Ed-Fi-Databases/    
+      run: |
+        $ErrorActionPreference = 'Stop'
+        $solution = "$env:GITHUB_WORKSPACE/Ed-Fi-Databases/src/EdFi.Db.Deploy.sln"
+        $reports = "$env:GITHUB_WORKSPACE\Ed-Fi-ODS-Implementation\reports\"
+        if (Test-Path $reports) {
+            Remove-Item -Path $reports -Force -Recurse | Out-Null
+        }
+        New-Item -ItemType Directory -Force -Path $reports | Out-Null
+        $reportName = $reports + "EdFi.Db.Deploy.xml"
+        .\build.githubactions.ps1 Test -Configuration ${{ env.CONFIGURATION }} -TestFilter "LocalOnly" -LoggerReportName $reportName -InformationalVersion ${{ env.INFORMATIONAL_VERSION}} -BuildCounter ${{ github.run_number }} -BuildIncrementer ${{env.BUILD_INCREMENTER}} -Solution "$env:GITHUB_WORKSPACE/Ed-Fi-Databases/src/EdFi.Db.Deploy.sln"
+      shell: pwsh
+    - name: pack
+      working-directory: ./Ed-Fi-Databases/
+      shell: pwsh
+      run: |
+        .\build.githubactions.ps1 pack -Configuration ${{ env.CONFIGURATION }} -InformationalVersion ${{ env.INFORMATIONAL_VERSION}} -BuildCounter ${{ github.run_number }} -BuildIncrementer ${{env.BUILD_INCREMENTER}} -PackageName "EdFi.Suite3.Db.Deploy" -ProjectFile "$env:GITHUB_WORKSPACE/Ed-Fi-Databases/src/EdFi.Db.Deploy/EdFi.Db.Deploy.csproj"
+    - name: Install-credential-handler
+      run: iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"
+      shell: pwsh        
+    - name: publish
+      working-directory: ./Ed-Fi-Databases/   
+      shell: pwsh
+      run: |
+        .\build.githubactions.ps1 publish -InformationalVersion ${{ env.INFORMATIONAL_VERSION }} -BuildCounter ${{ github.run_number }} -BuildIncrementer ${{env.BUILD_INCREMENTER}} -NuGetApiKey ${{ env.AZURE_ARTIFACT_NUGET_KEY }} -EdFiNuGetFeed ${{env.AZURE_ARTIFACT_URL}} -ProjectFile "$env:GITHUB_WORKSPACE/Ed-Fi-Databases/src/EdFi.Db.Deploy/EdFi.Db.Deploy.csproj" -PackageName  "EdFi.Suite3.Db.Deploy"
+    - name: Upload EdFi.Db.Deploy Artifact
+      if: success()
+      uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8 # v3.1.0
+      with:
+        name: EdFi.Db.Deploy.Artifacts
+        path: |
+              ${{ github.workspace }}/Ed-Fi-Databases/NugetPackages/EdFi.Suite3.Db.Deploy*.*
+              ${{ github.workspace }}/Ed-Fi-ODS-Implementation/reports/EdFi.Db.Deploy.xml
