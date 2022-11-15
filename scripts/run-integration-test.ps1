@@ -93,8 +93,8 @@ Param(
 )
 
 # Load external files
-. $PSScriptRoot\drop-ms-database.ps1
-. $PSScriptRoot\drop-pg-database.ps1
+. $PSScriptRoot/drop-ms-database.ps1
+. $PSScriptRoot/drop-pg-database.ps1
 
 $databaseName = $databaseType+$databaseNameSuffix
 
@@ -106,7 +106,7 @@ function Invoke-EdFiDbDeploy
 )
 {
     $filePaths = @(
-        "$pwd\scripts\"
+        "$pwd/scripts/"
     )
 
     if ($deployChangesFeature)
@@ -115,7 +115,7 @@ function Invoke-EdFiDbDeploy
             "Changes"
         )
 
-        &dotnet run --project $PSScriptRoot\..\src\EdFi.Db.Deploy\EdFi.Db.Deploy.csproj `
+        &dotnet run --project $PSScriptRoot/../src/EdFi.Db.Deploy/EdFi.Db.Deploy.csproj `
             --configuration release `
             deploy `
             --connectionString $connectionString `
@@ -126,7 +126,7 @@ function Invoke-EdFiDbDeploy
     }
     else
     {
-        &dotnet run --project $PSScriptRoot\..\src\EdFi.Db.Deploy\EdFi.Db.Deploy.csproj `
+        &dotnet run --project $PSScriptRoot/../src/EdFi.Db.Deploy/EdFi.Db.Deploy.csproj `
             --configuration release `
             deploy `
             --connectionString $connectionString `

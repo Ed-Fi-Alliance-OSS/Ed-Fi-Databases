@@ -29,13 +29,13 @@ Password for this user.
 Name of the database that needs to be dropped.
 
 .EXAMPLE
-.\drop-database.ps1 -server localhost -password password -databaseToDrop nameOfDatabase
+./drop-database.ps1 -server localhost -password password -databaseToDrop nameOfDatabase
 
 .EXAMPLE
-.\drop-database.ps1 -server localhost -port 5430 -userName superUser -password password -databaseToDrop nameOfDatabase
+./drop-database.ps1 -server localhost -port 5430 -userName superUser -password password -databaseToDrop nameOfDatabase
 
 .EXAMPLE
-.\drop-database.ps1 -server localhost -useIntegratedSecurity -databaseToDrop nameOfDatabase
+./drop-database.ps1 -server localhost -useIntegratedSecurity -databaseToDrop nameOfDatabase
 #>
 function Invoke-DropSqlServerDatabase(
     [Parameter(Mandatory=$true)]    
