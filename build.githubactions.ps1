@@ -7,7 +7,7 @@
 param(
     # Command to execute, defaults to "Build".
     [string]
-    [ValidateSet("Restore", "Clean", "Build", "Test", "Pack", "Publish")]
+    [ValidateSet("Restore", "DotnetClean", "Build", "Test", "Pack", "Publish")]
     $Command = "Build",
 
     [switch] $SelfContained,
@@ -122,7 +122,7 @@ function Restore {
     }
 }
 
-function Clean {
+function DotnetClean {
     Invoke-Execute { dotnet clean $Solution -c $Configuration --nologo -v minimal }
 }
 
@@ -180,7 +180,7 @@ function Test {
 
 function Invoke-Build {
     Write-Host "Building Version $version" -ForegroundColor Cyan
-    Invoke-Step { Clean }
+    Invoke-Step { DotnetClean }
     Invoke-Step { Compile }
 }
 
@@ -203,7 +203,7 @@ function Invoke-Restore {
 Invoke-Main {
     switch ($Command) {
         Restore { Invoke-Restore }
-        Clean { Invoke-Clean }
+        DotnetClean { Invoke-DotnetClean }
         Build { Invoke-Build }
         Test { Invoke-Tests }
         Pack { Invoke-Pack }
