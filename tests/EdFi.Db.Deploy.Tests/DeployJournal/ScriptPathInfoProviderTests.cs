@@ -11,6 +11,7 @@ using FakeItEasy;
 using NUnit.Framework;
 using EdFi.Db.Deploy.DeployJournal;
 using Shouldly;
+using System.IO;
 
 // ReSharper disable InconsistentNaming
 namespace EdFi.Db.Deploy.Tests.DeployJournal
@@ -43,11 +44,11 @@ namespace EdFi.Db.Deploy.Tests.DeployJournal
             [TestFixture]
             public class Given_there_are_core_scripts : WhenRetrievingAllScriptPathsInfo
             {
-                private const string BasePath = "c:\\ed-fi-ods-implementation";
-                private const string StructureScripts = "c:\\ed-fi-ods-implementation\\Artifacts\\MsSql\\Structure\\Ods";
-                private const string DataScripts = "c:\\ed-fi-ods-implementation\\Artifacts\\MsSql\\Data\\Ods";
-                private const string FeatureScripts = "c:\\ed-fi-ods-implementation\\Artifacts\\MsSql\\Structure\\Ods\\Changes";
-                private const string AdminStructureScripts = "c:\\ed-fi-ods-implementation\\Artifacts\\MsSql\\Structure\\Admin";
+                private static string BasePath = Path.Combine(RootPath, "ed-fi-ods-implementation");
+                private static string StructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "Artifacts", "MsSql", "Structure", "Ods");
+                private static string DataScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "Artifacts", "MsSql", "Data", "Ods");
+                private static string FeatureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "Artifacts", "MsSql", "Structure", "Ods", "Changes");
+                private static string AdminStructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "Artifacts", "MsSql", "Structure", "Admin");
 
                 protected override void Arrange()
                 {
@@ -142,11 +143,11 @@ namespace EdFi.Db.Deploy.Tests.DeployJournal
             [TestFixture]
             public class Given_there_are_no_core_scripts_for_the_database : WhenRetrievingAllScriptPathsInfo
             {
-                private const string BasePath = "c:\\ed-fi-ods-implementation";
-                private const string StructureScripts = "c:\\ed-fi-ods-implementation\\Artifacts\\MsSql\\Structure\\Ods";
-                private const string DataScripts = "c:\\ed-fi-ods-implementation\\Artifacts\\MsSql\\Data\\Ods";
-                private const string FeatureScripts = "c:\\ed-fi-ods-implementation\\Artifacts\\MsSql\\Structure\\Ods\\Changes";
-                private const string AdminStructureScripts = "c:\\ed-fi-ods-implementation\\Artifacts\\MsSql\\Structure\\Admin";
+                private static string BasePath = Path.Combine(RootPath, "ed-fi-ods-implementation");
+                private static string StructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "Artifacts", "MsSql", "Structure", "Ods");
+                private static string DataScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "Artifacts", "MsSql", "Data", "Ods");
+                private static string FeatureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "Artifacts", "MsSql", "Structure", "Ods", "Changes");
+                private static string AdminStructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "Artifacts", "MsSql", "Structure", "Admin");
 
                 protected override void Arrange()
                 {
@@ -181,11 +182,11 @@ namespace EdFi.Db.Deploy.Tests.DeployJournal
             [TestFixture]
             public class Given_there_are_extension_scripts : WhenRetrievingAllScriptPathsInfo
             {
-                private const string BasePath = "c:\\ed-fi-ods-implementation\\edfi.glendale.extension";
-                private const string StructureScripts = "c:\\ed-fi-ods-implementation\\edfi.glendale.extension\\Artifacts\\MsSql\\Structure\\Ods";
-                private const string DataScripts = "c:\\ed-fi-ods-implementation\\edfi.glendale.extension\\Artifacts\\MsSql\\Data\\Ods";
-                private const string FeatureScripts = "c:\\ed-fi-ods-implementation\\edfi.glendale.extension\\Artifacts\\MsSql\\Structure\\Ods\\Changes";
-                private const string AdminStructureScripts = "c:\\ed-fi-ods-implementation\\edfi.glendale.extension\\Artifacts\\MsSql\\Structure\\Admin";
+                private static string BasePath = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.glendale.extension");
+                private static string StructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.glendale.extension", "Artifacts", "MsSql", "Structure", "Ods");
+                private static string DataScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.glendale.extension", "Artifacts", "MsSql", "Data", "Ods");
+                private static string FeatureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.glendale.extension", "Artifacts", "MsSql", "Structure", "Ods", "Changes");
+                private static string AdminStructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.glendale.extension", "Artifacts", "MsSql", "Structure", "Admin");
 
                 protected override void Arrange()
                 {
@@ -277,11 +278,11 @@ namespace EdFi.Db.Deploy.Tests.DeployJournal
             [TestFixture]
             public class Given_there_are_no_extension_scripts : WhenRetrievingAllScriptPathsInfo
             {
-                private const string BasePath = "c:\\ed-fi-ods-implementation\\edfi.glendale.extension";
-                private const string StructureScripts = "c:\\ed-fi-ods-implementation\\edfi.glendale.extension\\Artifacts\\MsSql\\Structure\\Ods";
-                private const string DataScripts = "c:\\ed-fi-ods-implementation\\edfi.glendale.extension\\Artifacts\\MsSql\\Data\\Ods";
-                private const string FeatureScripts = "c:\\ed-fi-ods-implementation\\edfi.glendale.extension\\Artifacts\\MsSql\\Structure\\Ods\\Changes";
-                private const string AdminStructureScripts = "c:\\ed-fi-ods-implementation\\edfi.glendale.extension\\Artifacts\\MsSql\\Structure\\Admin";
+                private static string BasePath = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.glendale.extension");
+                private static string StructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.glendale.extension", "Artifacts", "MsSql", "Structure", "Ods");
+                private static string DataScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.glendale.extension", "Artifacts", "MsSql", "Data", "Ods");
+                private static string FeatureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.glendale.extension", "Artifacts", "MsSql", "Structure", "Ods", "Changes");
+                private static string AdminStructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.glendale.extension", "Artifacts", "MsSql", "Structure", "Admin");
 
                 protected override void Arrange()
                 {
@@ -315,11 +316,11 @@ namespace EdFi.Db.Deploy.Tests.DeployJournal
             [TestFixture]
             public class Given_there_are_legacy_extension_scripts : WhenRetrievingAllScriptPathsInfo
             {
-                private const string BasePath = "c:\\ed-fi-ods-implementation\\edfi.sample.extension";
-                private const string StructureScripts = "c:\\ed-fi-ods-implementation\\edfi.sample.extension\\Database\\Structure\\EdFi";
-                private const string DataScripts = "c:\\ed-fi-ods-implementation\\edfi.sample.extension\\Database\\Data\\EdFi";
-                private const string FeatureScripts = "c:\\ed-fi-ods-implementation\\edfi.sample.extension\\Database\\Structure\\EdFi\\Changes";
-                private const string AdminStructureScripts = "c:\\ed-fi-ods-implementation\\edfi.sample.extension\\Database\\Structure\\EdFiAdmin";
+                private static string BasePath = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.sample.extension");
+                private static string StructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.sample.extension", "Database", "Structure", "EdFi");
+                private static string DataScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.sample.extension", "Database", "Data", "EdFi");
+                private static string FeatureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.sample.extension", "Database", "Structure", "EdFi", "Changes");
+                private static string AdminStructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.sample.extension", "Database", "Structure", "EdFiAdmin");
 
                 protected override void Arrange()
                 {
@@ -411,11 +412,11 @@ namespace EdFi.Db.Deploy.Tests.DeployJournal
             [TestFixture]
             public class Given_there_are_no_legacy_extension_scripts : WhenRetrievingAllScriptPathsInfo
             {
-                private const string BasePath = "c:\\ed-fi-ods-implementation\\edfi.sample.extension";
-                private const string StructureScripts = "c:\\ed-fi-ods-implementation\\edfi.sample.extension\\Database\\Structure\\EdFi";
-                private const string DataScripts = "c:\\ed-fi-ods-implementation\\edfi.sample.extension\\Database\\Data\\EdFi";
-                private const string FeatureScripts = "c:\\ed-fi-ods-implementation\\edfi.sample.extension\\Database\\Structure\\EdFi\\Changes";
-                private const string AdminStructureScripts = "c:\\ed-fi-ods-implementation\\edfi.sample.extension\\Database\\Structure\\EdFiAdmin";
+                private static string BasePath = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.sample.extension");
+                private static string StructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.sample.extension", "Database", "Structure", "EdFi");
+                private static string DataScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.sample.extension", "Database", "Data", "EdFi");
+                private static string FeatureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.sample.extension", "Database", "Structure", "EdFi", "Changes");
+                private static string AdminStructureScripts = Path.Combine(RootPath, "ed-fi-ods-implementation", "edfi.sample.extension", "Database", "Structure", "EdFiAdmin");
 
                 protected override void Arrange()
                 {

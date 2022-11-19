@@ -4,6 +4,7 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System;
+using System.Runtime.InteropServices;
 using FakeItEasy;
 using NUnit.Framework;
 
@@ -12,6 +13,10 @@ namespace EdFi.Db.Deploy.Tests
     [TestFixture]
     public abstract class TestFixtureBase
     {
+        public static string RootPath { get; } = RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+            ? "C:\\"
+            : "/";
+
         [SetUp]
         public virtual void SetupFixture() { }
 

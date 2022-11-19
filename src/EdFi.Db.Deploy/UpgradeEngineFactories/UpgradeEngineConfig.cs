@@ -27,9 +27,9 @@ namespace EdFi.Db.Deploy.UpgradeEngineFactories
 
         public string ParentFolder()
         {
-            if (ParentPath.TrimEnd('\\')
+            if (ParentPath.TrimEnd(Path.DirectorySeparatorChar)
                     .EndsWith("Ed-Fi-ODS", StringComparison.InvariantCultureIgnoreCase)
-                || ParentPath.TrimEnd('\\')
+                || ParentPath.TrimEnd(Path.DirectorySeparatorChar)
                     .EndsWith("Ed-Fi-ODS-Implementation", StringComparison.InvariantCultureIgnoreCase))
                 return ParentPath;
 

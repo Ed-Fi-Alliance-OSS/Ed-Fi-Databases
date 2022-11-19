@@ -14,8 +14,8 @@ namespace EdFi.Db.Deploy.Tests.ScriptPathResolverTests
     [TestFixture]
     public class ScriptPathResolverTests
     {
-        private const string OdsFolder = @"c:\edfi\ed-fi-ods";
-        private const string StandardFolder = @"c:\edfi\ed-fi-ods-implementation\edfi.ods.standard";
+        private static string OdsFolder = Path.Combine(TestFixtureBase.RootPath, "edfi", "ed-fi-ods");
+        private static string StandardFolder = Path.Combine(TestFixtureBase.RootPath, "edfi", "ed-fi-ods-implementation", "edfi.ods.standard");
 
         public class When_resolving_the_path_using_the_new_artifacts_folder_structure_in_the_ods : TestFixtureBase
         {

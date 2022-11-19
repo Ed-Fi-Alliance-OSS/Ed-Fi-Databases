@@ -14,7 +14,7 @@ namespace EdFi.Db.Deploy.Tests.ScriptPathResolverTests
     [TestFixture]
     public class LegacyExtensionsScriptPathResolverTests
     {
-        private const string ExtensionFolder = @"c:\edfi\ed-fi-ods-implementation\edfi.ods.extensions.grandbend";
+        private static string ExtensionFolder = Path.Combine(TestFixtureBase.RootPath, "edfi", "ed-fi-ods-implementation", "edfi.ods.extensions.grandbend");
 
         public class When_resolving_the_path_of_an_extension_using_the_legacy_folder_structure : TestFixtureBase
         {
