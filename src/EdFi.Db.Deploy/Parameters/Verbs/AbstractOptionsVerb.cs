@@ -15,17 +15,17 @@ namespace EdFi.Db.Deploy.Parameters.Verbs
 
         protected static readonly List<string> SampleFilePath = new List<string>
         {
-            @"c:\Ed-Fi\Ed-Fi-ODS",
-            @"c:\Ed-Fi\Ed-Fi-ODS-Implementation"
+            @"c:/Ed-Fi/Ed-Fi-ODS",
+            @"c:/Ed-Fi/Ed-Fi-ODS-Implementation"
         };
 
         protected static readonly List<string> SampleFilePathsWithExtensions = new List<string>
         {
-            @"c:\Ed-Fi\Ed-Fi-ODS",
-            @"c:\Ed-Fi\Ed-Fi-ODS-Implementation",
-            @"c:\Ed-Fi\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.GrandBend",
-            @"c:\Ed-Fi\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.Homograph",
-            @"c:\Ed-Fi\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.Sample"
+            @"c:/Ed-Fi/Ed-Fi-ODS",
+            @"c:/Ed-Fi/Ed-Fi-ODS-Implementation",
+            @"c:/Ed-Fi/Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Extensions.GrandBend",
+            @"c:/Ed-Fi/Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Extensions.Homograph",
+            @"c:/Ed-Fi/Ed-Fi-ODS-Implementation/Application/EdFi.Ods.Extensions.Sample"
         };
 
         protected static readonly List<string> SampleFeatures = new List<string>

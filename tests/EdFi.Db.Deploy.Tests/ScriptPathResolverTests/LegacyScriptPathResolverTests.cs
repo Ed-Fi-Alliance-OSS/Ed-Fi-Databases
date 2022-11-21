@@ -14,7 +14,7 @@ namespace EdFi.Db.Deploy.Tests.ScriptPathResolverTests
     [TestFixture]
     public class LegacyScriptPathResolverTests
     {
-        private const string OdsFolder = @"c:\edfi\ed-fi-ods";
+        private static string OdsFolder = Path.Combine(TestFixtureBase.RootPath, "edfi", "ed-fi-ods");
 
         public class When_resolving_the_path_using_the_legacy_folder_structure_in_the_ods : TestFixtureBase
         {

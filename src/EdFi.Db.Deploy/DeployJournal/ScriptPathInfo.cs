@@ -50,7 +50,7 @@ namespace EdFi.Db.Deploy.DeployJournal
 
                 string scriptFileNamePrefix = ScriptPath.Remove(0, parentFolder.Length);
 
-                scriptFileNamePrefix = scriptFileNamePrefix.Replace("\\", ".");
+                scriptFileNamePrefix = scriptFileNamePrefix.Replace(Path.DirectorySeparatorChar, '.');
 
                 if (scriptFileNamePrefix.StartsWith("."))
                     scriptFileNamePrefix = scriptFileNamePrefix.Remove(0, 1);
@@ -60,9 +60,9 @@ namespace EdFi.Db.Deploy.DeployJournal
 
             string ParentFolder()
             {
-                if (ParentPath.TrimEnd('\\')
+                if (ParentPath.TrimEnd(Path.DirectorySeparatorChar)
                         .EndsWith("Ed-Fi-ODS", StringComparison.InvariantCultureIgnoreCase)
-                    || ParentPath.TrimEnd('\\')
+                    || ParentPath.TrimEnd(Path.DirectorySeparatorChar)
                         .EndsWith("Ed-Fi-ODS-Implementation", StringComparison.InvariantCultureIgnoreCase))
                     return ParentPath;
 
