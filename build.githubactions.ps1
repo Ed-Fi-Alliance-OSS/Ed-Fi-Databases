@@ -52,6 +52,9 @@ param(
     $TestFilter,
 
     [string]
+    $LoggerReportName, 
+
+    [string]
     $NuspecFilePath,
 
     [string]
@@ -170,10 +173,10 @@ function Publish {
 }
 
 function Test {
-    if(-not $TestFilter) {
+    if(-not $TestFilter -and -not $LoggerReportName) {
         Invoke-Execute { dotnet test $solution  -c $Configuration --no-build -v normal }
     } else {
-        Invoke-Execute { dotnet test $solution  -c $Configuration --no-build -v normal --filter TestCategory!~"$TestFilter" }
+        Invoke-Execute { dotnet test $solution  -c $Configuration --no-build -v normal --filter TestCategory!~"$TestFilter" --logger "trx;LogFileName=$LoggerReportName" }
     }
 }
 
