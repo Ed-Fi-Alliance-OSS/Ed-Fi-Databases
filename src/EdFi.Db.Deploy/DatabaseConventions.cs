@@ -15,6 +15,10 @@ namespace EdFi.Db.Deploy
         public static string JournalTable = "DeployJournal";
         public const string StandardProject = "EdFi.Ods.Standard";
         public const string StandardFolder = "Standard";
+        public const string VersionsFolder = "Versions";
+        public const string DefaultExtensionVersion = "1.0.0";
+        public const string ExtensionPrefix = "EdFi.Ods.Extensions.";
+        public const string TPDMExtensionPath = $"{ExtensionPrefix}TPDM";
 
         public static class SqlServer
         {

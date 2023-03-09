@@ -36,6 +36,9 @@ namespace EdFi.Db.Deploy.Parameters
         [Option("standardVersion", Required = false, HelpText = "Standard Version")]
         public string StandardVersion { get; set; }
 
+        [Option("extensionVersion", Required = false, HelpText = "Extension Version")]
+        public string ExtensionVersion { get; set; }
+
         bool AreFeaturesValidForLegacyDatabaseDirectoryStructure();
     }
 }
