@@ -13,6 +13,8 @@ namespace EdFi.Db.Deploy
         public const string SupportingArtifactsDirectory = "SupportingArtifacts";
         public const string DatabaseDirectory = "Database";
         public static string JournalTable = "DeployJournal";
+        public const string StandardProject = "EdFi.Ods.Standard";
+        public const string StandardFolder = "Standard";
 
         public static class SqlServer
         {
