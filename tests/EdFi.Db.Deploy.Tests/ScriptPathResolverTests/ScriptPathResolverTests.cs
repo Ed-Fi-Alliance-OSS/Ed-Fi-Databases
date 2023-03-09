@@ -14,8 +14,9 @@ namespace EdFi.Db.Deploy.Tests.ScriptPathResolverTests
     [TestFixture]
     public class ScriptPathResolverTests
     {
+        private static string StandardVersion = "4.0.0";
         private static string OdsFolder = Path.Combine(TestFixtureBase.RootPath, "edfi", "ed-fi-ods");
-        private static string StandardFolder = Path.Combine(TestFixtureBase.RootPath, "edfi", "ed-fi-ods-implementation", "edfi.ods.standard");
+        private static string StandardFolder = Path.Combine(TestFixtureBase.RootPath, "edfi", "ed-fi-ods", DatabaseConventions.StandardProject);
 
         public class When_resolving_the_path_using_the_new_artifacts_folder_structure_in_the_ods : TestFixtureBase
         {
@@ -116,7 +117,7 @@ namespace EdFi.Db.Deploy.Tests.ScriptPathResolverTests
 
             protected override void Arrange()
             {
-                _sut = new ScriptPathResolver(StandardFolder, DatabaseType.ODS, EngineType.PostgreSql);
+                _sut = new ScriptPathResolver(StandardFolder, DatabaseType.ODS, EngineType.PostgreSql, standardVersion: StandardVersion);
             }
 
             protected override void Act()
@@ -133,6 +134,8 @@ namespace EdFi.Db.Deploy.Tests.ScriptPathResolverTests
                 => _dataScriptPath.ShouldBe(
                     Path.Combine(
                         StandardFolder,
+                        DatabaseConventions.StandardFolder,
+                        StandardVersion,
                         DatabaseConventions.ArtifactsDirectory,
                         EngineType.PostgreSql.Directory(),
                         DatabaseConventions.DataDirectory,
@@ -146,6 +149,8 @@ namespace EdFi.Db.Deploy.Tests.ScriptPathResolverTests
                 => _structureScriptPath.ShouldBe(
                     Path.Combine(
                         StandardFolder,
+                        DatabaseConventions.StandardFolder,
+                        StandardVersion,
                         DatabaseConventions.ArtifactsDirectory,
                         EngineType.PostgreSql.Directory(),
                         DatabaseConventions.StructureDirectory,
@@ -160,7 +165,7 @@ namespace EdFi.Db.Deploy.Tests.ScriptPathResolverTests
 
             protected override void Arrange()
             {
-                _sut = new ScriptPathResolver(StandardFolder, DatabaseType.ODS, EngineType.SqlServer, "Feature");
+                _sut = new ScriptPathResolver(StandardFolder, DatabaseType.ODS, EngineType.SqlServer, "Feature", standardVersion: StandardVersion);
             }
 
             protected override void Act()
@@ -177,6 +182,8 @@ namespace EdFi.Db.Deploy.Tests.ScriptPathResolverTests
                 => _dataScriptPath.ShouldBe(
                     Path.Combine(
                         StandardFolder,
+                        DatabaseConventions.StandardFolder,
+                        StandardVersion,
                         DatabaseConventions.ArtifactsDirectory,
                         EngineType.SqlServer.Directory(),
                         DatabaseConventions.DataDirectory,
@@ -191,6 +198,8 @@ namespace EdFi.Db.Deploy.Tests.ScriptPathResolverTests
                 => _structureScriptPath.ShouldBe(
                     Path.Combine(
                         StandardFolder,
+                        DatabaseConventions.StandardFolder,
+                        StandardVersion,
                         DatabaseConventions.ArtifactsDirectory,
                         EngineType.SqlServer.Directory(),
                         DatabaseConventions.StructureDirectory,

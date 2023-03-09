@@ -12,25 +12,27 @@ namespace EdFi.Db.Deploy.ScriptPathResolvers {
     public class ScriptPathResolver : ScriptPathResolverBase
     {
         private readonly EngineType _engineType;
+        protected readonly string _standardVersion;
 
-        public ScriptPathResolver(string path, DatabaseType databaseType, EngineType engineType, string feature = null)
+        public ScriptPathResolver(string path, DatabaseType databaseType, EngineType engineType, string feature = null, string standardVersion = null)
             : base(path, databaseType, feature)
         {
             _engineType = engineType;
+            _standardVersion = standardVersion;
         }
 
         public override string StructureScriptPath()
             => Path.GetFullPath(
                 !string.IsNullOrEmpty(_feature)
                     ? Path.Combine(
-                        _path,
+                        GetStandardFolderPath(),
                         DatabaseConventions.ArtifactsDirectory,
                         _engineType.Directory(),
                         DatabaseConventions.StructureDirectory,
                         DatabaseTypeDirectory(),
                         _feature)
                     : Path.Combine(
-                        _path,
+                        GetStandardFolderPath(),
                         DatabaseConventions.ArtifactsDirectory,
                         _engineType.Directory(),
                         DatabaseConventions.StructureDirectory,
@@ -40,14 +42,14 @@ namespace EdFi.Db.Deploy.ScriptPathResolvers {
             => Path.GetFullPath(
                 !string.IsNullOrEmpty(_feature)
                     ? Path.Combine(
-                        _path,
+                        GetStandardFolderPath(),
                         DatabaseConventions.ArtifactsDirectory,
                         _engineType.Directory(),
                         DatabaseConventions.DataDirectory,
                         DatabaseTypeDirectory(),
                         _feature)
                     : Path.Combine(
-                        _path,
+                        GetStandardFolderPath(),
                         DatabaseConventions.ArtifactsDirectory,
                         _engineType.Directory(),
                         DatabaseConventions.DataDirectory,
@@ -69,6 +71,16 @@ namespace EdFi.Db.Deploy.ScriptPathResolvers {
                 default:
                     throw new ArgumentOutOfRangeException($"DatabaseType \"{_databaseType}\" is not found.");
             }
+        }
+
+        private string GetStandardFolderPath()
+        {
+            if(!_path.Contains(DatabaseConventions.StandardProject, StringComparison.InvariantCultureIgnoreCase))
+            {
+                return _path;
+            }
+
+            return Path.Combine(_path, DatabaseConventions.StandardFolder, _standardVersion);
         }
     }
 }
