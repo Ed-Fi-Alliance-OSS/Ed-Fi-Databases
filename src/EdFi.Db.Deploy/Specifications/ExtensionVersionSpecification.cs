@@ -6,13 +6,19 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using EdFi.Db.Deploy.Helpers;
 using EdFi.Db.Deploy.Parameters;
+using log4net;
 
 namespace EdFi.Db.Deploy.Specifications
 {
     public class ExtensionVersionSpecification : OptionsSpecification
     {
+        private readonly ILog _logger = LogManager.GetLogger(
+            MethodBase.GetCurrentMethod()
+                .DeclaringType);
+
         public override bool IsSatisfiedBy(IOptions obj)
         {
             Preconditions.ThrowIfNull(obj, nameof(obj));
@@ -22,16 +28,18 @@ namespace EdFi.Db.Deploy.Specifications
 
             if (extensionPaths.Count() == 0)
             {
+                _logger.Debug($"No extension paths were found.");
                 return true;
             }
 
             if (string.IsNullOrEmpty(obj.StandardVersion) || string.IsNullOrEmpty(obj.ExtensionVersion))
             {
-                ErrorMessages.Add($"Standard and Extension Versions are required to run artifacts from the extension projects.");
+                _logger.Debug($"StandardVersion and ExtensionVersion parameters are required to run artifacts from the extension projects.");
+                ErrorMessages.Add($"StandardVersion and ExtensionVersion parameters are required to run artifacts from the extension projects.");
                 return false;
             }
 
-            foreach(var extensionPath in extensionPaths)
+            foreach (var extensionPath in extensionPaths)
             {
                 var extensionVersionPath = Path.GetFullPath(
                                 Path.Combine(
@@ -43,6 +51,7 @@ namespace EdFi.Db.Deploy.Specifications
 
                 if (!Directory.Exists(extensionVersionPath))
                 {
+                    _logger.Debug($"Extension {extensionPath} has no extension version {obj.ExtensionVersion} folder.");
                     var extensionDefaultVersionPath = Path.GetFullPath(
                                 Path.Combine(
                                     extensionPath,
@@ -51,8 +60,9 @@ namespace EdFi.Db.Deploy.Specifications
                                     DatabaseConventions.StandardFolder,
                                     obj.StandardVersion));
 
-                    if(!Directory.Exists(extensionDefaultVersionPath))
+                    if (!Directory.Exists(extensionDefaultVersionPath))
                     {
+                        _logger.Debug($"Extension {extensionPath} has no default extension version {DatabaseConventions.DefaultExtensionVersion} folder.");
                         ErrorMessages.Add($"Extension Version directory {extensionVersionPath} does not exist");
                         ErrorMessages.Add($"Default Extension Version directory {extensionDefaultVersionPath} does not exist");
                     }

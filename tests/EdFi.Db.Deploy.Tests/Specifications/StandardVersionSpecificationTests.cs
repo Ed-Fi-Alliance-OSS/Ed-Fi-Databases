@@ -3,7 +3,6 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
-using System.Collections.Generic;
 using System.IO;
 using EdFi.Db.Deploy.Parameters;
 using EdFi.Db.Deploy.Specifications;
@@ -144,7 +143,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
                 A.CallTo(() => _options.FilePaths)
                     .Returns(new[] {
                         Path.Combine(
-                            TestContext.CurrentContext.TestDirectory, 
+                            TestContext.CurrentContext.TestDirectory,
                             DatabaseConventions.StandardProject
                             )
                     });
@@ -164,7 +163,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
                     .Count.ShouldBe(0);
 
             [Test]
-            public void Should_return_false() => _result.ShouldBeTrue();
+            public void Should_return_true() => _result.ShouldBeTrue();
         }
 
         public class When_validating_standard_project_path_with_invalid_standardVersion : TestFixtureBase
@@ -191,7 +190,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
 
                 A.CallTo(() => _options.FilePaths)
                     .Returns(new[] {
-                        Path.Combine(TestContext.CurrentContext.TestDirectory, 
+                        Path.Combine(TestContext.CurrentContext.TestDirectory,
                         DatabaseConventions.StandardProject
                         )
                     });

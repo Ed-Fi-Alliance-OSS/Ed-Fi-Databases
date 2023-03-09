@@ -3,8 +3,6 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
-using System;
-using System.Collections.Generic;
 using System.IO;
 using EdFi.Db.Deploy.Parameters;
 using EdFi.Db.Deploy.Specifications;
@@ -37,7 +35,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
 
         private static void SetUpFixture()
         {
-            foreach(var path in _paths)
+            foreach (var path in _paths)
             {
                 if (!Directory.Exists(path))
                 {
@@ -91,7 +89,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
                 _options = A.Fake<IOptions>();
 
                 A.CallTo(() => _options.FilePaths)
-                    .Returns(new[] { 
+                    .Returns(new[] {
                         "../../../../../../Ed-Fi-ODS-Implementation/",
                         "../../../../../../Ed-Fi-ODS/"
                     });
@@ -122,7 +120,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
                 _options = A.Fake<IOptions>();
 
                 A.CallTo(() => _options.FilePaths)
-                    .Returns(new[] { 
+                    .Returns(new[] {
                         "../../../../../../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.TPDM/",
                         "../../../../../../Ed-Fi-Extensions/Extensions/EdFi.Ods.Extensions.Homograph/"
                     });

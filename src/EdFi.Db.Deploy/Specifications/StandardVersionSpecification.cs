@@ -23,29 +23,32 @@ namespace EdFi.Db.Deploy.Specifications
         {
             Preconditions.ThrowIfNull(obj, nameof(obj));
 
-            var standardProjectPath = obj.FilePaths.FirstOrDefault(x => 
+            var standardProjectPath = obj.FilePaths.FirstOrDefault(x =>
                 x.Contains(DatabaseConventions.StandardProject, StringComparison.InvariantCultureIgnoreCase));
 
-            if(standardProjectPath == null)
+            if (standardProjectPath == null)
             {
+                _logger.Debug($"No standard project path was found.");
                 return true;
             }
 
-            if(string.IsNullOrEmpty(obj.StandardVersion))
+            if (string.IsNullOrEmpty(obj.StandardVersion))
             {
-                ErrorMessages.Add($"Standard Version is required to run artifacts form the {DatabaseConventions.StandardProject} project.");
+                _logger.Debug($"Standard Version is required to run artifacts from the {DatabaseConventions.StandardProject} project.");
+                ErrorMessages.Add($"Standard Version is required to run artifacts from the {DatabaseConventions.StandardProject} project.");
                 return false;
             }
 
             var standardVersionPath = Path.GetFullPath(
                 Path.Combine(
-                    standardProjectPath, 
-                    DatabaseConventions.StandardFolder, 
+                    standardProjectPath,
+                    DatabaseConventions.StandardFolder,
                     obj.StandardVersion));
 
             if (!Directory.Exists(standardVersionPath))
             {
-                ErrorMessages.Add($"Standard Version directory {standardVersionPath} does not exist");
+                _logger.Debug($"Standard Version directory {standardVersionPath} does not exist.");
+                ErrorMessages.Add($"Standard Version directory {standardVersionPath} does not exist.");
             }
 
             return !ErrorMessages.Any();
