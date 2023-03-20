@@ -55,7 +55,7 @@ namespace EdFi.Db.Deploy.DatabaseCommands
             // LegacyVersion: /Database/Structure/[DatabaseTypeFolder]/{*.sql}
             foreach (string path in filePaths)
             {
-                var results = RunScripts(path, true);
+                var results = RunScripts(path, true, options.StandardVersion, options.ExtensionVersion);
                 commandResults.Add(results);
 
                 // If any filePath fails to upgrade, abort immediately to avoid further changing the database
@@ -70,7 +70,7 @@ namespace EdFi.Db.Deploy.DatabaseCommands
             // LegacyVersion: /Database/Data/[DatabaseTypeFolder]/{*.sql}
             foreach (string path in filePaths)
             {
-                var results = RunScripts(path, false);
+                var results = RunScripts(path, false, options.StandardVersion, options.ExtensionVersion);
                 commandResults.Add(results);
 
                 // If any filePath fails to upgrade, abort immediately to avoid further changing the database
@@ -82,10 +82,10 @@ namespace EdFi.Db.Deploy.DatabaseCommands
 
             return DatabaseCommandResult.Create(commandResults);
 
-            DatabaseCommandResult RunScripts(string path, bool isStructureScripts)
+            DatabaseCommandResult RunScripts(string path, bool isStructureScripts, string standardVersion, string extensionVersion)
             {
                 config.ParentPath = path;
-                config.ScriptPath = ScriptsPath(new ScriptPathResolver(path, options.DatabaseType, options.Engine));
+                config.ScriptPath = ScriptsPath(new ScriptPathResolver(path, options.DatabaseType, options.Engine, standardVersion: standardVersion, extensionVersion: extensionVersion));
 
                 if (!Directory.Exists(config.ScriptPath))
                 {
