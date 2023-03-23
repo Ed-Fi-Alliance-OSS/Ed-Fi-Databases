@@ -10,7 +10,7 @@
     <Company>Ed-Fi Alliance</Company>
     <Product>Ed-Fi Ods Database Deployment Utility</Product>
     <Description>Database deployment utility for the Ed-Fi ODS/API solution.</Description>
-    <Copyright>Copyright © 2019 Ed-Fi Alliance, LLC and contributors</Copyright>
+    <Copyright>Copyright © $([System.DateTime]::Now.ToString(`yyyy`)) Ed-Fi Alliance, LLC and Contributors</Copyright>
     <PackageId>EdFi.Db.Deploy</PackageId>
     <PackageProjectUrl>https://github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Databases/tree/master</PackageProjectUrl>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
