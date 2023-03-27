@@ -32,8 +32,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Check for Github token
-      if: ${{ env.REPOSITORY_OWNER == 'Ed-Fi-Alliance-OSS' && env.EDFI_ODS_IMP_TOKEN == '' }}
+    - name: Check for Azure Token
+      if: ${{ env.REPOSITORY_OWNER == 'Ed-Fi-Alliance-OSS' && env.AZURE_ARTIFACT_NUGET_KEY == '' }}
       run: | 
         echo "Missing GitHub Token" 
         exit 1 
@@ -100,7 +100,7 @@ jobs:
       run: iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"
       shell: pwsh        
     - name: publish
-      if: ${{ env.EDFI_ODS_IMP_TOKEN != '' }}
+      if: ${{ env.AZURE_ARTIFACT_NUGET_KEY != '' }}
       working-directory: ./Ed-Fi-Databases/   
       shell: pwsh
       run: |
