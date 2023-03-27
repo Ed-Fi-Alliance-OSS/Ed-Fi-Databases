@@ -23,8 +23,7 @@ env:
   VSS_NUGET_EXTERNAL_FEED_ENDPOINTS : '{"endpointCredentials": [{"endpoint": "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json","password": "${{ secrets.AZURE_ARTIFACTS_PERSONAL_ACCESS_TOKEN }}"}]}'
   HEAD_REF:  ${{ GITHUB.HEAD_REF }}
   REF_NAME:  ${{ GITHUB.REF_NAME }}
-  REPOSITORY_DISPATCH_BRANCH: ${{ github.event.client_payload.branch }}  
-  EPOSITORY_OWNER: ${{ GITHUB.REPOSITORY_OWNER }}
+  REPOSITORY_DISPATCH_BRANCH: ${{ github.event.client_payload.branch }}
 
 jobs:
   build:
@@ -32,11 +31,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Check for Github token
-      if: ${{ env.REPOSITORY_OWNER == 'Ed-Fi-Alliance-OSS' && env.EDFI_ODS_IMP_TOKEN == '' }}
-      run: | 
-        echo "Missing GitHub Token" 
-        exit 1 
     - name: Setup .NET
       uses: actions/setup-dotnet@c0d4ad69d8bd405d234f1c9166d383b7a4f69ed8 # v2.1.0
       with:
@@ -100,7 +94,6 @@ jobs:
       run: iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"
       shell: pwsh        
     - name: publish
-      if: ${{ env.EDFI_ODS_IMP_TOKEN != '' }}
       working-directory: ./Ed-Fi-Databases/   
       shell: pwsh
       run: |
