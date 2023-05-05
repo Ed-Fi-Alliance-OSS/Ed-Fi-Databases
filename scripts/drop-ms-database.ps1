@@ -61,38 +61,28 @@ function Invoke-DropSqlServerDatabase(
 {
     $ErrorActionPreference = "Stop";
 
-    $DBConnectionString = "Server=$server,$port;Database=master;";
+    if ($port -ne 1433) {
+        $server += ",$port";
+    }
+
+    $MasterConnectionString = "Server=$server;Database=master;";
     if ($useIntegratedSecurity) {
-        $DBConnectionString += "Integrated Security=SSPI;";
+        $MasterConnectionString += "Integrated Security=SSPI;";
     }
     else {
-        $DBConnectionString += "User ID=$username;Password=$password;";
-    }
+        $MasterConnectionString += "User ID=$username;Password=$password;";
+    }  
 
-    $DBConn = New-Object System.Data.SqlClient.SqlConnection;
-
-    $commands = @(
-        "ALTER DATABASE [$databaseToDrop] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;";
-        "DROP DATABASE [$databaseToDrop];"
-    );
-
-    try
-    {
-        $DBConn.ConnectionString = $DBConnectionString;
-        $DBConn.Open();
-
-        $commands.ForEach(
-        {
-            $DBCmd = $DBConn.CreateCommand();
-            $DBCmd.CommandText = $_;
-            $DBCmd.ExecuteNonQuery() | out-null;
-        });
-
-        Write-Host "Database $databaseToDrop has been dropped from $($server),$($port)";
-    }
-    finally 
-    {
-        $DBConn.Close();
-        $DbConn.Dispose();
-    }
+    $dropDatabase = @(
+            "IF DATABASEPROPERTYEX('$databaseToDrop', 'Status') != 'RESTORING'"
+            "BEGIN"
+                "ALTER DATABASE [$databaseToDrop] SET SINGLE_USER WITH ROLLBACK IMMEDIATE"
+            "END"
+            "GO"
+            "DROP DATABASE [$databaseToDrop]"
+            "GO"
+        ) -join "`n"
+    Write-Host "Dropping the $databaseName Database."
+    Invoke-SqlScript -connectionString $MasterConnectionString -sql $dropDatabase
+    Write-Host "Database $databaseToDrop has been dropped from $($server)";
 }
