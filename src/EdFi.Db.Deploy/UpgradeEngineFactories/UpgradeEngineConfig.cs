@@ -33,6 +33,11 @@ namespace EdFi.Db.Deploy.UpgradeEngineFactories
                     .EndsWith("Ed-Fi-ODS-Implementation", StringComparison.InvariantCultureIgnoreCase))
                 return ParentPath;
 
+            if (ParentPath.Contains("Plugin", StringComparison.InvariantCultureIgnoreCase))
+            {
+                ParentPath = ParentPath.Substring(0,ParentPath.IndexOf("Extensions"));
+                return ParentPath;
+            }
             var parent = new DirectoryInfo(ParentPath).Parent;
 
             return parent == null
