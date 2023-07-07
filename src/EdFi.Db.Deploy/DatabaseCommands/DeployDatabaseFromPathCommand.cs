@@ -19,7 +19,7 @@ namespace EdFi.Db.Deploy.DatabaseCommands
     public abstract class DeployDatabaseFromPathCommand : IDatabaseCommand
     {
         private const string EdFiStandardIdentifier = "EdFi.Ods.Standard";
-
+        private const string PluginIdentifier = "Plugin";
         private readonly ILog _logger;
         private readonly IUpgradeEngineFactory _upgradeEngineFactory;
 
@@ -39,6 +39,8 @@ namespace EdFi.Db.Deploy.DatabaseCommands
             Preconditions.ThrowIfNull(options, nameof(options));
 
             var filePaths = options.FilePaths.ToList();
+            filePaths = filePaths.OrderBy(path => path.Contains(EdFiStandardIdentifier) ? 2:1 ).ToList();
+            filePaths = filePaths.OrderBy(path => path.Contains(PluginIdentifier) ? 2 : 1).ToList();
 
             if (!filePaths.Any())
             {
