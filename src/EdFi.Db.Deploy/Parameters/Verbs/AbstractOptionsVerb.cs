@@ -58,7 +58,6 @@ namespace EdFi.Db.Deploy.Parameters.Verbs
             get => _standardVersion;
             set
             {
-                // Add custom validation logic here
                 if (vaildStandardVersions.Contains(value))
                 {
                     _standardVersion = value;
