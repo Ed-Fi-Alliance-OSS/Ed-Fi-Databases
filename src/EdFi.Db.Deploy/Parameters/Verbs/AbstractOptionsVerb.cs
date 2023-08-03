@@ -12,6 +12,7 @@ namespace EdFi.Db.Deploy.Parameters.Verbs
     public abstract class AbstractOptionsVerb : IOptions
     {
         protected const string SampleConnectionString = "<connection string>";
+        private string _standardVersion;
 
         protected static readonly List<string> SampleFilePath = new List<string>
         {
@@ -34,6 +35,12 @@ namespace EdFi.Db.Deploy.Parameters.Verbs
             "Sample"
         };
 
+        protected static readonly List<string> vaildStandardVersions = new List<string>
+        {
+            "4.0.0",
+            "5.0.0"
+        };
+
         public DatabaseType DatabaseType { get; set; }
 
         public EngineType Engine { get; set; }
@@ -46,7 +53,22 @@ namespace EdFi.Db.Deploy.Parameters.Verbs
 
         public IEnumerable<string> Features { get; set; }
 
-        public string StandardVersion { get; set; }
+        public string StandardVersion
+        {
+            get => _standardVersion;
+            set
+            {
+                // Add custom validation logic here
+                if (vaildStandardVersions.Contains(value))
+                {
+                    _standardVersion = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid StandardVersion. Only 4.0.0 and 5.0.0 are allowed.");
+                }
+            }
+        }
 
         public string ExtensionVersion { get; set; }
 
