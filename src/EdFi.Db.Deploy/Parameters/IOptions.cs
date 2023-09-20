@@ -33,10 +33,10 @@ namespace EdFi.Db.Deploy.Parameters
         [Option('f', "features", Separator = ',', HelpText = "Feature: Changes,Sample")]
         IEnumerable<string> Features { get; set; }
 
-        [Option("standardVersion", Required = false, HelpText = "Standard Version")]
+        [Option("standardVersion", Required = false, Default="5.0.0", HelpText = "Standard Version")]
         public string StandardVersion { get; set; }
 
-        [Option("extensionVersion", Required = false, HelpText = "Extension Version")]
+        [Option("extensionVersion", Required = false, Default="1.1.0", HelpText = "Extension Version")]
         public string ExtensionVersion { get; set; }
 
         bool AreFeaturesValidForLegacyDatabaseDirectoryStructure();
