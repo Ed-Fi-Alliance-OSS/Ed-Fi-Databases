@@ -8,7 +8,6 @@ using EdFi.Db.Deploy.Parameters;
 using EdFi.Db.Deploy.Specifications;
 using FakeItEasy;
 using NUnit.Framework;
-using NUnit.Framework.Internal;
 using Shouldly;
 
 namespace EdFi.Db.Deploy.Tests.Specifications
@@ -28,9 +27,23 @@ namespace EdFi.Db.Deploy.Tests.Specifications
                 TestContext.CurrentContext.TestDirectory,
                 $"{DatabaseConventions.ExtensionPrefix}Homograph",
                 DatabaseConventions.VersionsFolder,
-                "1.0.0",
+                "1.1.0",
                 DatabaseConventions.StandardFolder,
                 "4.0.0"),
+            Path.Combine(
+                TestContext.CurrentContext.TestDirectory,
+                DatabaseConventions.TPDMExtensionPath,
+                DatabaseConventions.VersionsFolder,
+                "1.1.0",
+                DatabaseConventions.StandardFolder,
+                "5.0.0"),
+            Path.Combine(
+                TestContext.CurrentContext.TestDirectory,
+                $"{DatabaseConventions.ExtensionPrefix}Homograph",
+                DatabaseConventions.VersionsFolder,
+                "1.1.0",
+                DatabaseConventions.StandardFolder,
+                "5.0.0"),
         };
 
         private static void SetUpFixture()
@@ -140,7 +153,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
             public void Should_return_false() => _result.ShouldBeFalse();
         }
 
-        public class When_validating_extension_project_paths_with_valid_extensionVersion : TestFixtureBase
+        public class When_validating_extension_project_paths_with_valid_4_0_0_extensionVersion : TestFixtureBase
         {
             [OneTimeSetUp]
             public void SetUp()
@@ -195,6 +208,61 @@ namespace EdFi.Db.Deploy.Tests.Specifications
             public void Should_return_true() => _result.ShouldBeTrue();
         }
 
+        public class When_validating_extension_project_paths_with_valid_5_0_0_extensionVersion : TestFixtureBase
+        {
+            [OneTimeSetUp]
+            public void SetUp()
+            {
+                SetUpFixture();
+            }
+
+            [OneTimeTearDown]
+            public void TearDown()
+            {
+                TearDownFixture();
+            }
+
+            private ISpecification<IOptions> _sut;
+            private bool _result;
+            private IOptions _options;
+
+            protected override void Arrange()
+            {
+                _options = A.Fake<IOptions>();
+
+                A.CallTo(() => _options.FilePaths)
+                    .Returns(new[] {
+                        Path.Combine(
+                            TestContext.CurrentContext.TestDirectory,
+                            DatabaseConventions.TPDMExtensionPath
+                        ),
+                        Path.Combine(
+                            TestContext.CurrentContext.TestDirectory,
+                            $"{DatabaseConventions.ExtensionPrefix}Homograph"
+                        )
+                    });
+
+                A.CallTo(() => _options.StandardVersion)
+                    .Returns("5.0.0");
+
+                A.CallTo(() => _options.ExtensionVersion)
+                    .Returns("1.1.0");
+
+                _sut = new ExtensionVersionSpecification();
+            }
+
+            protected override void Act()
+                => _result = _sut.IsSatisfiedBy(_options);
+
+            [Test]
+            public void Should_have_no_error_messages()
+                => _sut.ErrorMessages
+                    .Count.ShouldBe(0);
+
+            [Test]
+            public void Should_return_true() => _result.ShouldBeTrue();
+        }
+        
         public class When_validating_extension_project_paths_with_invalid_standardVersion : TestFixtureBase
         {
             [OneTimeSetUp]
@@ -230,7 +298,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
                     });
 
                 A.CallTo(() => _options.StandardVersion)
-                    .Returns("5.0.0");
+                    .Returns("0.0.0");
 
                 A.CallTo(() => _options.ExtensionVersion)
                     .Returns("1.1.0");
@@ -242,7 +310,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
                 => _result = _sut.IsSatisfiedBy(_options);
 
             [Test]
-            public void Should_have_one_error_message()
+            public void Should_have_four_error_message()
                 => _sut.ErrorMessages
                     .Count.ShouldBe(4);
 
