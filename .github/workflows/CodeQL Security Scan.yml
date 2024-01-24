@@ -7,11 +7,9 @@ name: CodeQL Security Scan
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [main, b-v*-patch*]
   push:
-    branches:
-      - main
+    branches: [main, b-v*-patch*]
 env:
   CONFIGURATION: "Release"
 
