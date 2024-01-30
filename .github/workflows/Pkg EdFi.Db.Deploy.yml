@@ -36,6 +36,7 @@ jobs:
       run: | 
         echo "::error::Missing Azure Token" 
         exit 1 
+ 
     - name: Support longpaths
       run: git config --system core.longpaths true
     - name: Checkout Ed-Fi-Databases
