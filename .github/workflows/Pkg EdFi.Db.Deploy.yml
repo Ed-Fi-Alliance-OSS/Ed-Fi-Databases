@@ -7,10 +7,9 @@ name: Pkg EdFi.Db.Deploy
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, ODS-*]
   push:
-    branches:
-      - main
+    branches: [main, ODS-*]
   workflow_dispatch:
         
 env:
