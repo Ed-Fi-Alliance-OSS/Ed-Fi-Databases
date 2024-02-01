@@ -7,10 +7,9 @@ name: Pkg EdFi.Db.Deploy
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, ODS-*]
   push:
-    branches:
-      - main
+    branches: [main, ODS-*]
   workflow_dispatch:
         
 env:
@@ -37,6 +36,7 @@ jobs:
       run: | 
         echo "::error::Missing Azure Token" 
         exit 1 
+ 
     - name: Support longpaths
       run: git config --system core.longpaths true
     - name: Checkout Ed-Fi-Databases
