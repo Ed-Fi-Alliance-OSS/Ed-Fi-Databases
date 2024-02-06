@@ -6,7 +6,6 @@
 using System;
 using System.IO;
 using EdFi.Db.Deploy.Extensions;
-using EdFi.Db.Deploy.Helpers;
 
 namespace EdFi.Db.Deploy.ScriptPathResolvers {
     public class ScriptPathResolver : ScriptPathResolverBase

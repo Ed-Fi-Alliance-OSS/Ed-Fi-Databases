@@ -5,7 +5,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using EdFi.Db.Deploy.Adapters;
 using EdFi.Db.Deploy.DatabaseCommands;
 using EdFi.Db.Deploy.DeployJournal;
 using EdFi.Db.Deploy.UpgradeEngineFactories;
