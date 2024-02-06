@@ -5,12 +5,12 @@
 
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using EdFi.Db.Deploy.Helpers;
+using Microsoft.Data.SqlClient;
 
 namespace EdFi.Db.Deploy.DeployJournal
 {

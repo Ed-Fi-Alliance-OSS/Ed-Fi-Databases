@@ -4,7 +4,6 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 using System.IO;
-using EdFi.Db.Deploy.Extensions;
 using EdFi.Db.Deploy.ScriptPathResolvers;
 using NUnit.Framework;
 using Shouldly;
