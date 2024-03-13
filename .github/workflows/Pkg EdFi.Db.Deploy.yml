@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
         
 env:
-  INFORMATIONAL_VERSION: "3.1"
+  INFORMATIONAL_VERSION: "2.5"
   BUILD_INCREMENTER: "1"
   CONFIGURATION: "Release"
   CURRENT_BRANCH:  ${{ GITHUB.REF_NAME }}
