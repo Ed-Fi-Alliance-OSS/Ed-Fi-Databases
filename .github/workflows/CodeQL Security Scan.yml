@@ -7,11 +7,9 @@ name: CodeQL Security Scan
 
 on:
   pull_request:
-    branches:
-      - main
+      branches: [main, ODS-*]
   push:
-    branches:
-      - main
+      branches: [main, ODS-*]
 env:
   CONFIGURATION: "Release"
 
@@ -24,9 +22,6 @@ jobs:
       actions: read
       contents: read
       security-events: write
-
-    strategy:
-      fail-fast: false
 
     steps:
       - name: Checkout code
