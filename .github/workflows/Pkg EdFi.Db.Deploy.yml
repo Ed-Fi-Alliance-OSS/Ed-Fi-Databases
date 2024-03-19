@@ -7,10 +7,10 @@ name: Packages - EdFi.Db.Deploy
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main-6x]
   push:
     branches:
-      - main
+      - main-6x
   workflow_dispatch:
         
 env:
