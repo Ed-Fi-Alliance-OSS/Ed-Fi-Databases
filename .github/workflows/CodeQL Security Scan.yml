@@ -8,10 +8,10 @@ name: CodeQL Security Scan
 on:
   pull_request:
     branches:
-      - main
+      - main-6x
   push:
     branches:
-      - main
+      - main-6x
 env:
   CONFIGURATION: "Release"
 
