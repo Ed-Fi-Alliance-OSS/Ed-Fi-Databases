@@ -289,6 +289,10 @@ function Invoke-CheckoutBranch {
     Invoke-Step { CheckoutBranch }
 }
 
+function Invoke-InstallCredentialHandler {
+    Invoke-Step { InstallCredentialHandler }
+}
+
 Invoke-Main {
     switch ($Command) {
         Restore { Invoke-Restore }
@@ -298,6 +302,7 @@ Invoke-Main {
         Pack { Invoke-Pack }
         Publish { Invoke-Publish }
         CheckoutBranch { Invoke-CheckoutBranch }
+        InstallCredentialHandler { Invoke-InstallCredentialHandler }
         default { throw "Command '$Command' is not recognized" }
     }
 }
