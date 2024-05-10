@@ -36,14 +36,14 @@ namespace EdFi.Db.Deploy.Tests.Specifications
                 DatabaseConventions.VersionsFolder,
                 "1.1.0",
                 DatabaseConventions.StandardFolder,
-                "5.0.0"),
+                "5.1.0"),
             Path.Combine(
                 TestContext.CurrentContext.TestDirectory,
                 $"{DatabaseConventions.ExtensionPrefix}Homograph",
                 DatabaseConventions.VersionsFolder,
                 "1.1.0",
                 DatabaseConventions.StandardFolder,
-                "5.0.0"),
+                "5.1.0"),
         };
 
         private static void SetUpFixture()
@@ -243,7 +243,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
                     });
 
                 A.CallTo(() => _options.StandardVersion)
-                    .Returns("5.0.0");
+                    .Returns("5.1.0");
 
                 A.CallTo(() => _options.ExtensionVersion)
                     .Returns("1.1.0");

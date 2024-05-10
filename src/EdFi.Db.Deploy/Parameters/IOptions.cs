@@ -33,7 +33,7 @@ namespace EdFi.Db.Deploy.Parameters
         [Option('f', "features", Separator = ',', HelpText = "Feature: Changes,Sample")]
         IEnumerable<string> Features { get; set; }
 
-        [Option('s', "standardVersion", Required = true, Default="5.0.0", HelpText = "Standard Version")]
+        [Option('s', "standardVersion", Required = true, Default="5.1.0", HelpText = "Standard Version")]
         public string StandardVersion { get; set; }
 
         [Option('v', "extensionVersion", Required = false, Default="1.1.0", HelpText = "Extension Version")]

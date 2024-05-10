@@ -196,7 +196,7 @@ namespace EdFi.Db.Deploy.Tests.Specifications
                     });
 
                 A.CallTo(() => _options.StandardVersion)
-                    .Returns("5.0.0");
+                    .Returns("5.1.0");
 
                 _sut = new StandardVersionSpecification();
             }
