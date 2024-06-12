@@ -11,6 +11,8 @@ on:
   push:
     branches: [main, ODS-*]
   workflow_dispatch:
+
+permissions: read-all
         
 env:
   INFORMATIONAL_VERSION: "4.1"

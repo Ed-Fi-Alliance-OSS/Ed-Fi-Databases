@@ -1,5 +1,7 @@
 # Ed-Fi-Databases
 
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Databases/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Ed-Fi-Alliance-OSS/Ed-Fi-Databases)
+
 Database deployment utility for the Ed-Fi Technical Suite 3 databases.
 
 For more information, see:
