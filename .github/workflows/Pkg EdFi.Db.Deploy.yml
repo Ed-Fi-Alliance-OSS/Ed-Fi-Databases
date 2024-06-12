@@ -10,12 +10,12 @@ on:
     branches: [main-8x, 'b-v2.4']
   push:
     branches:
-      - main-6x
+      - [main-8x, 'b-v2.4']
   workflow_dispatch:
         
 env:
-  INFORMATIONAL_VERSION: "3.2"
-  BUILD_INCREMENTER: "-67"
+  INFORMATIONAL_VERSION: "2.4"
+  BUILD_INCREMENTER: "-104"
   CONFIGURATION: "Release"
   CURRENT_BRANCH:  ${{ GITHUB.REF_NAME }}
   AZURE_ARTIFACT_URL: "https://pkgs.dev.azure.com/ed-fi-alliance/Ed-Fi-Alliance-OSS/_packaging/EdFi/nuget/v3/index.json"
