@@ -7,7 +7,7 @@ name: Dependency Review Pull request
 
 on:
   pull_request:
-    branches: [main-6x]
+    branches: [main-8x, 'b-v2.4']
 
 jobs:
   scan-actions:
