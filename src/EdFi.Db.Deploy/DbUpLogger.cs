@@ -45,7 +45,10 @@ namespace EdFi.Db.Deploy
 
         public void LogTrace(string format, params object[] args)
         {
-            LogInformation(format, args);
+            Preconditions.ThrowIfNull(format, nameof(format));
+            Preconditions.ThrowIfNull(args, nameof(args));
+
+            _logger.Debug(string.Format(format, args));
         }
 
         public void LogDebug(string format, params object[] args)
