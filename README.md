@@ -15,7 +15,7 @@ For more information, see:
 
 ### Build Instructions
 
-- Requires [.NET 8 SDK](https://dotnet.microsoft.com/download)
+- Requires [.NET 10 SDK](https://dotnet.microsoft.com/download)
 - No special commands to execute - simply call `dotnet build` in the `src`
   directory.
 
