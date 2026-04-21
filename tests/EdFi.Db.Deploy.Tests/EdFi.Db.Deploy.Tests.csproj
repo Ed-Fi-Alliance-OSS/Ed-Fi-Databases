@@ -16,7 +16,6 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Shouldly" Version="4.3.0" />
-      <PackageReference Include="TeamCity.VSTest.TestAdapter" Version="1.0.41" />
     </ItemGroup>
 
     <ItemGroup>
